@@ -1,0 +1,21 @@
+﻿@* Для смены языка*@
+@{
+    ViewBag.Title = "LanguageSwitcher";
+}
+
+<h2>LanguageSwitcher</h2>
+
+<div class="language-switcher">
+    <select id="culture">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+    </select>
+    <button onclick="changeLanguage()">Change Language</button>
+</div>
+
+<script>
+    function changeLanguage() {
+        var selectedLanguage = document.getElementById("culture").value;
+        window.location.href = "/Home/SetLanguage?culture=" + selectedLanguage;
+    }
+</script>

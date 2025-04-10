@@ -1,0 +1,91 @@
+﻿@using System.Web.Optimization
+@*@model ShopFurniture_2_Web.Models.TeamMember*@
+@using ShopFurniture_2_Web.Models;
+<!doctype html>
+<html lang="en">
+@*Набросок реализации смены языка
+    @{
+        var culture = Session["Language"] ?? "en";
+    }
+
+    <div class="language-switcher">
+        <a href="@Url.Action("ChangeLanguage", "Home", new { culture = "en" })">English</a> |
+        <a href="@Url.Action("ChangeLanguage", "Home", new { culture = "ru" })">Русский</a>
+    </div>*@
+@*@{
+    var culture = Session["Language"] != null ? Session["Language"].ToString() : "en";
+}
+
+<div class="language-switcher">
+    <a href="@Url.Action("ChangeLanguage", "Home", new { culture = "en" })" @(culture == "en" ? "class=active" : "")>English</a> |
+    <a href="@Url.Action("ChangeLanguage", "Home", new { culture = "ru" })" @(culture == "ru" ? "class=active" : "")>Русский</a>
+</div>*@
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="~/PackFurni/images/favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
+    <!-- Bootstrap CSS -->
+    <!--
+    <link href="~/PackFurni/Css/bootstrap.min.css" rel="stylesheet">
+    -->
+    <!--
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    -->
+    <!--
+    <link href="~/PackFurni/Css/tiny-slider.css" rel="stylesheet">
+    <link href="~/PackFurni/Css/style.css" rel="stylesheet">
+    -->
+
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/tiny-slider/css")
+    @Styles.Render("~/bundles/style/css")
+
+
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+    <title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+</head>
+
+<body>
+
+    <!-- Start Header/Navigation -->
+    <header>
+
+        @Html.Partial("_Header")
+
+
+    </header>
+    @RenderBody()
+    <!-- Сюда кидать контент страницы получается-->
+
+    <footer class="footer-section">
+        @Html.Partial("_Footer")
+    </footer>
+    <!-- End Footer Section -->
+    <!--
+    <script src="~/PackFurni/js/bootstrap.bundle.min.js"></script>
+    <script src="~/PackFurni/js/tiny-slider.js"></script>
+    <script src="~/PackFurni/js/custom.js"></script>
+    -->
+
+    <script src="~/PackFurni/js/bootstrap.bundle.min.js"></script>
+    @Scripts.Render("~/bundles/tiny-slider/js")
+    @Scripts.Render("~/bundles/custom/js")
+
+    @*@Scripts.Render("~/bundles/bootstrap_bundle/js")*@
+    <!-- Handler for local scripts -->
+    <!--
+    RenderSection("scripts", required: false)
+    -->
+
+</body>
+
+</html>
