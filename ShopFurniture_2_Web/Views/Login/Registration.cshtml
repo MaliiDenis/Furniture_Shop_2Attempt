@@ -1,0 +1,137 @@
+﻿@using System.Web.Optimization
+@using ShopFurniture_2_Web.Models;
+
+
+@{
+    ViewBag.Title = "Registration";
+    Layout = null;
+
+}
+
+@*Форма => модель в web
+    в input
+    то есть :
+    <input type="text" id="username" name="Username" required>
+    будут поля что нужно будет создать в моделе в web => web model*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="~/PackFurni/images/favicon.png">
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/tiny-slider/css")
+    @Styles.Render("~/bundles/style/css")
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa; /* Adjust background color as needed */
+        }
+
+        .registration-form {
+            width: 300px; /* Adjust the width as needed */
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff; /* Adjust background color as needed */
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            button[type="submit"]:hover {
+                background-color: #0056b3;
+            }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px; /* Add margin bottom to center the form vertically */
+        }
+        
+        /*.footer-section {*/
+            /*
+            margin-top: auto;*/
+            /*background-color: #333;
+             Original background color */
+            /*color: #fff;*/ 
+            /*padding: 20px 0;*/
+            /*text-align: center;
+            */
+            /*width: 100%;*/
+            
+        /*}*/
+
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("RegistPost", "Login", FormMethod.Post, new { autocomplete = "off" }))
+    {
+            <div class="registration-form">
+                <h2>Registration</h2>
+                
+                    <form action="/submit_register_form" method="post">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">User Name:</label>
+                            <input type="text" id="email" name="UserName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <input type="password" id="confirmPassword" name="Password" required>
+                        </div>
+                        <button type="submit">Register</button>
+                    </form>
+</div>
+            }
+            <footer class="footer-section">
+                @Html.Partial("_Footer")
+            </footer>
+            <script src="~/PackFurni/js/bootstrap.bundle.min.js"></script>
+            @Scripts.Render("~/bundles/tiny-slider/js")
+            @Scripts.Render("~/bundles/custom/js")
+
+    </body>
+</html>
+
+
